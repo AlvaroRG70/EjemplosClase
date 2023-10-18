@@ -13,3 +13,7 @@ def listar_libros(request):
 def dame_libro(request, id_libro):
     libro = Libro.objects.select_related("bliblioteca").prefetch_related("autores").get(id=id_libro)
     return render(request, "libro/libro.html",{"libro":libro})
+
+def listar_clientes(request):
+    clientes = Cliente.objets.all()
+    return render(request, "cliente/clientelist.html", {"cliente_mostrar":clientes})
