@@ -1,4 +1,4 @@
-#!/home/alumnado/Escritorio/2DAW/ES/EjemplosClase/biblioteca/myvenv/bin/python
+#!/home/alumnado/Escritorio/2DAW_NUEVA/Servidor/Django/EjemplosClase/biblioteca/myvenv/bin/python
 # When the django-admin.py deprecation ends, remove this script.
 import warnings
 
