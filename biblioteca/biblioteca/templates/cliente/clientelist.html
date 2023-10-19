@@ -5,12 +5,14 @@
     </head>
     <body>
         <div>
-            <h2>Nombre: {{cliente_mostrar.nombre}}</h2>
-            <h2>Apellidos: {{cliente_mostrar.apellidos}}</h2>
-            <p>email: {{cliente_mostrar.email}}</p>
-            <h3>puntos: {{cliente_mostrar.puntos}}</h3>
-            <p>Telefono: {{cliente_mostrar.telefono}}</p>
-            
+            {% for cliente in clientes_mostrar%}
+                <h2>Nombre: {{cliente.nombre}}</h2>
+                <h2>Apellidos: {{cliente.apellidos}}</h2>
+                <p>email: {{cliente.email}}</p>
+                <h3>puntos: {{cliente.puntos}}</h3>
+                <p>Telefono: {{cliente.telefono}}</p>
+                <p>-------------------------------------------------------------------------------------------------------------</p>
+            {%endfor%}
         </div>
     
     </body>

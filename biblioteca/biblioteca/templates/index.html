@@ -5,8 +5,10 @@
         <h2>Listado de enlaces</h2>
         <ul>
             <li><a href="{% url 'lista_libros' %}">Libros</a></li>
+            <li><a href="{% url 'dame_libros_fecha' 2001 4%}">Libros del año 2001 del mes Abril</a></li>
             <li><a href="{% url 'dame_libro' id_libro=10 %}">libro interesante </a></li>
-            
+            <li><a href="{% url 'lista_client' %}">Clientes</a></li>
+            <li><a href="{% url 'lista_biblio' %}">Bibliotecas</a></li>
         </ul>
         
     </body>

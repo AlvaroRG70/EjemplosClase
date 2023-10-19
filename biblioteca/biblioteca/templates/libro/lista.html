@@ -15,9 +15,18 @@
                     {%endfor%}
                 </ul>
                 <p>Fecha Publicacion {{libro.fecha_publicacion}}</p>
+
+                    <a href="{% url "dame_libros_fecha" libro.fecha_publicacion.year libro.fecha_publicacion.month %}">
+                        pulsa para ver libros del mismo año y mes
+                    </a>
+                <a href="{% url "dame_libros_idioma" libro.idioma%}">
+                    pulsa para ver libros del mismo idioma o español
+                </a>
+
                 <h3>Idioma: {{libro.get_idioma_display}}</h3>
                 <p>Descripcion {{libro.descripcion}}</p>
                 <a href="{% url "dame_libro" id_libro=libro.id %}">Pulsa para ver el libro con más detalle</a>
+                
             </div>
         
         {% endfor %}

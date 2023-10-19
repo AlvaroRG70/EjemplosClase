@@ -1,0 +1,23 @@
+<!DOCTYPE>
+<html>
+    <head>
+        <title>Biblioteca</title>
+    </head>
+    <body>
+        <div>
+            {%for biblioteca in biblioteca_mostrar%}
+                <h2>Nombre: {{biblioteca.nombre}}</h2>
+                <h2>Direccion: {{biblioteca.direccion}}</h2>
+                <p>email: {{biblioteca.email}}</p>
+                <h3>Fecha creacion: {{biblioteca.fechaCreacion}}</h3>
+                <p>Telefono: {{biblioteca.telefono}}</p>
+                <p>-------------------------------------------------------------------------------------------------------------</p>
+            {%endfor%}
+
+            
+        </div>
+    
+    </body>
+
+
+</html>
