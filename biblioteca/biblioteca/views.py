@@ -1,6 +1,7 @@
 from django.shortcuts import render
 from biblioteca.models import Libro, Cliente, Biblioteca
 from django.db.models import Q
+from django.views.defaults import page_not_found
 
 # Create your views here.
 
@@ -35,3 +36,19 @@ def listar_biblioteca(request):
     bibliotecas = Biblioteca.objects.all()
     return render(request, "biblioteca/bibliotecalist.html", {"biblioteca_mostrar":bibliotecas})
 
+def dame_libros_biblioteca(request, id_biblioteca, texto_libro):
+    libros = Libro.objects.select_related("bliblioteca").prefetch_related("autores")
+    libros = libros.filter(bliblioteca = id_biblioteca).filter(descripcion__contains=texto_libro).order_by("-nombre")
+    return render(request, "libro/lista.html", {"libros_mostrar":libros})
+
+def dame_ultimo_cliente_libro(request, libro):
+    cliente = Cliente.objects.filter(prestamo__libro=libro).order_by("-prestamo__fecha_prestamo")[:1].get()
+    return render(request, "cliente/cliente.html", {"cliente":cliente})
+
+def libros_no_prestados(request):
+    libros = Libro.objects.select_related("bliblioteca").prefetch_related("autores")
+    libros = libros.filter(prestamo=None)
+    return render(request, "libro/lista.html", {"libros_mostrar":libros})
+
+def mi_error_404(request, exception = None):
+    return render(request, "errores/404.html", None, None, 404)
