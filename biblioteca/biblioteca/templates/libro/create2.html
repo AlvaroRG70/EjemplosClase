@@ -2,12 +2,16 @@
 
 {% block contenido %}
 
-<form action = "" method = "post">
+<form action = "" method = "POST">
     {% load bootstrap5 %}
     
     {% csrf_token %}
     <div class="mb-4">
         {% bootstrap_field formulario.nombre %}
+    </div>
+
+    <div class="mb-4">
+        {% bootstrap_field formulario.isbn %}
     </div>
 
     <div class="mb-4">
@@ -20,6 +24,16 @@
     <div class="mb-4">
         {% bootstrap_field formulario.idioma %}
     </div>
+
+    <div class="mb-4">
+        {% bootstrap_field formulario.autores %}
+    </div>
+
+    <div class="mb-4">
+        {% bootstrap_field formulario.bliblioteca %}
+    </div>
+
+
     {% buttons %}
         <button type="submit" class="btn btn-primary">Enviar</button>
     {%endbuttons%}

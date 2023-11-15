@@ -1,4 +1,4 @@
-from django.shortcuts import render
+from django.shortcuts import render, redirect
 from biblioteca.models import Libro, Cliente, Biblioteca
 from django.db.models import Q
 from django.views.defaults import page_not_found
@@ -57,6 +57,29 @@ def mi_error_404(request, exception = None):
 
 
 
+
 def libro_create(request):
-    formulario = LibroModelForm()
+    datosFormulario = None
+    if request.method == "POST":
+        datosFormulario = request.POST
+    formulario = LibroModelForm(datosFormulario)
+    
+    if (request.method == "POST"):
+        libro_creado = crear_libro_modelo(formulario)
+        if (libro_creado):
+            return redirect("lista_libros")
     return render(request, "libro/create2.html",{"formulario":formulario})
+        
+        
+
+def crear_libro_modelo(formulario):
+    libro_creado = False
+    
+    if formulario.is_valid():
+        try:
+            formulario.save()
+            libro_creado = True
+            
+        except Exception as error:
+            print(error)
+    return libro_creado

@@ -46,7 +46,7 @@ class LibroForms(forms.Form):
 class LibroModelForm(ModelForm):   
     class Meta:
         model = Libro
-        fields = ['nombre','descripcion','fecha_publicacion','idioma','bliblioteca','autores']
+        fields = ['nombre','isbn','descripcion','fecha_publicacion','idioma','bliblioteca','autores']
         labels = {
             "nombre": ("Nombre del Libro"),
         }
